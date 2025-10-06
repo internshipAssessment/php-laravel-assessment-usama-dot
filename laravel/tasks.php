@@ -14,7 +14,7 @@ use App\Models\Order;
 // Order by created_at desc
 // Save result in $orders
 // ------------------------------------------------------------
-$orders = null; // TODO: assign Eloquent query result to $orders
+$orders = Orders::latest(5)->where('total_marks' '>' '100')->Orderby('DESC')->NOW(); // TODO: assign Eloquent query result to $orders
 
 // ------------------------------------------------------------
 // Task 2 — FormRequest rules for storing a User
@@ -23,10 +23,15 @@ $orders = null; // TODO: assign Eloquent query result to $orders
 // password: required, min 8, confirmed
 // Return the array from this function.
 // ------------------------------------------------------------
-function userStoreRules(): array
+function userStoreRules(Request $request): array
 {
-    // TODO: return array of Laravel validation rules
-    return [];
+
+    $request->validate([
+        $request->'required|string|min:2,max:50',
+        $request->'required|email|unique:users,email',
+        $request->'required|min:8|confirmed'
+    ]);
+    return redirect('/');
 }
 
 // ------------------------------------------------------------
