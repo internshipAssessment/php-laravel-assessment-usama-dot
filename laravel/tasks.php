@@ -48,7 +48,7 @@ use Illuminate\Support\Carbon;
 
 class Order extends Model
 {
-    // TODO: paste the scope here
+    //TODO: paste the scope here
     // public function scopeRecentDays(Builder $query, int $days)
     // {
     // }
